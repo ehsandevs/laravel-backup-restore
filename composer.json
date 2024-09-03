@@ -1,13 +1,13 @@
 {
     "name": "ehsandevs/laravel-backup-restore",
     "description": "A package to restore database backups made with spatie/laravel-backup.",
+    "keywords": [
+        "laravel",
+        "laravel-backup",
+        "laravel-backup-restore"
+    ],
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Ehsandevs\\LaravelBackupRestore\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Amir Ehsan Haji Hussaini",
@@ -34,5 +34,41 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.6 || ^10.0"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ehsandevs\\LaravelBackupRestore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ehsandevs\\LaravelBackupRestore\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ehsandevs\\LaravelBackupRestore\\LaravelBackupRestoreServiceProvider"
+            ],
+            "aliases": {
+                "LaravelBackupRestore": "Ehsandevs\\LaravelBackupRestore\\Facades\\LaravelBackupRestore"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
