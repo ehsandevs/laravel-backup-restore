@@ -1,5 +1,7 @@
 # Restore database backups made with spatie/laravel-backup
 
+> Forker from [stefanzweifel/laravel-backup-restore](https://github.com/stefanzweifel/laravel-backup-restore) v1.0.2 because conflicted with my composer dependencies
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wnx/laravel-backup-restore.svg?style=flat-square)](https://packagist.org/packages/wnx/laravel-backup-restore)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/stefanzweifel/laravel-backup-restore/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/stefanzweifel/laravel-backup-restore/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/stefanzweifel/laravel-backup-restore/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/stefanzweifel/laravel-backup-restore/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
@@ -12,7 +14,7 @@ A package to restore a database backup created by the [spatie/laravel-backup](ht
 You can install the package via composer:
 
 ```bash
-composer require wnx/laravel-backup-restore
+composer require ehsandevs/laravel-backup-restore
 ```
 
 Optionally, you can publish the config file with:
@@ -35,7 +37,7 @@ return [
      * The restore command will fail, if any health checks fail.
      */
     'health-checks' => [
-        \Wnx\LaravelBackupRestore\HealthChecks\Checks\DatabaseHasTables::class,
+        \Ehsandevs\LaravelBackupRestore\HealthChecks\Checks\DatabaseHasTables::class,
     ],
 ];
 ```
@@ -104,13 +106,13 @@ php artisan backup:restore
 After the backup has been restored, the package will run a series of health checks to ensure that the database has been imported correctly.
 By default, the package will check if the database has tables after the restore.
 
-You can add your own health checks by creating classes that extend `Wnx\LaravelBackupRestore\HealthChecks\HealthCheck`-class.
+You can add your own health checks by creating classes that extend `Ehsandevs\LaravelBackupRestore\HealthChecks\HealthCheck`-class.
 
 ```php
 namespace App\HealthChecks;
 
-use Wnx\LaravelBackupRestore\PendingRestore;
-use Wnx\LaravelBackupRestore\HealthChecks\HealthCheck;
+use Ehsandevs\LaravelBackupRestore\PendingRestore;
+use Ehsandevs\LaravelBackupRestore\HealthChecks\HealthCheck;
 
 class MyCustomHealthCheck extends HealthCheck
 {
@@ -141,7 +143,7 @@ Add your health check to the `health-checks`-array in the `config/laravel-backup
 
 ```php
     'health-checks' => [
-        \Wnx\LaravelBackupRestore\HealthChecks\Checks\DatabaseHasTables::class,
+        \Ehsandevs\LaravelBackupRestore\HealthChecks\Checks\DatabaseHasTables::class,
         \App\HealthChecks\MyCustomHealthCheck::class,
     ],
 ```
