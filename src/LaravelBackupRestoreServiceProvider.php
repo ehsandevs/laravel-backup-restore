@@ -6,7 +6,7 @@ namespace Ehsandevs\LaravelBackupRestore;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Wnx\LaravelBackupRestore\Commands\RestoreCommand;
+use Ehsandevs\LaravelBackupRestore\Commands\RestoreCommand;
 
 class LaravelBackupRestoreServiceProvider extends PackageServiceProvider
 {
